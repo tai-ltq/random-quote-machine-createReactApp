@@ -1,14 +1,106 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Raleway', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.quote-box {
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 40px 50px;
+  background: #fff !important;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.quote {
+  margin-bottom: 30px;
+}
+
+.quote-appear {
+  opacity: 0.01;
+}
+
+.quote-appear.quote-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.quote-enter {
+  opacity: 0.01;
+}
+
+.quote-enter.quote-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.quote-leave {
+  opacity: 1;
+}
+
+.quote-leave.quote-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+.quote-box h1 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.75em;
+  text-align: center;
+}
+
+.quote-box h1 i {
+  margin-right: 10px;
+  font-size: 1em;
+}
+
+.author {
+  text-align: right;
+  margin: 20px 0 0;
+}
+
+.buttons div {
+  display: inline-block;
+}
+
+.buttons__social a, .buttons__change {
+  display: inline-block;
+  border-radius: 3px;
+  height: 38px;
+  text-align: center;
+  color: white;
+}
+
+.buttons__social {
+  float: left;
+  font-size: 19px;
+}
+
+.buttons__social a {
+  width: 40px;
+  line-height: 38px;
+  background-color: initial;
+}
+
+.buttons__social a:first-child {
+  margin-right: 5px;
+}
+
+.buttons__change {
+  float: right;
+  padding: 8px 18px 6px;
+  border: none;
+  outline: none !important;
+}
+
+.buttons__social a:hover, .buttons__change:hover {
+  opacity: 0.9;
 }
