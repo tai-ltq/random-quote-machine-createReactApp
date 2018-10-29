@@ -6,6 +6,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Raleway', sans-serif;
+  transition: background-color 1s;
 }
 
 .quote-box {
@@ -128,10 +129,10 @@ body {
 }
 
 .fade-exit.fade-exit-active {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 500ms linear;
 }
 
 .fade-exit-done {
-  opacity: 0;
+  opacity: 1;
 }

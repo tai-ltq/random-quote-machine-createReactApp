@@ -1,5 +1,5 @@
 import React from 'react';
-import Quotes from './modules/Quotes/Quotes';
+import ListQuotes from './modules/Quotes/ListQuotes';
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Quotes quotes={this.state.quotes} />
+        <ListQuotes quotes={this.state.quotes} />
       </div>
     );
   }

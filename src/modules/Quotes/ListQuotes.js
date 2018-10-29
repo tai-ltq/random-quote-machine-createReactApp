@@ -2,7 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { CSSTransition } from 'react-transition-group';
 
-class Quotes extends React.Component {
+import ChangeQuote from './ChangeQuote';
+
+class ListQuotes extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -127,11 +129,11 @@ class Quotes extends React.Component {
               <i className="fa fa-tumblr" />
             </a>
           </div>
-          <button className="buttons__change" onClick={this.changeQuote.bind(this)} style={style.backgroundColor}>New quote</button>
+          <ChangeQuote changeQuote={this.changeQuote.bind(this)} backgroundColor={style.backgroundColor} />
         </div>
       </div>
     );
   }
 }
 
-export default Quotes;
+export default ListQuotes;
