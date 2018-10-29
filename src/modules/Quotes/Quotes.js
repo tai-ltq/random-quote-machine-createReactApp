@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { CSSTransition } from 'react-transition-group';
 
 class Quotes extends React.Component {
   constructor() {
@@ -9,6 +10,7 @@ class Quotes extends React.Component {
       colorIndex: 0,
       quotes: [],
       colors: [],
+      appearQuote: true,
       style: {
         body: {
           backgroundColor: null,
@@ -39,7 +41,7 @@ class Quotes extends React.Component {
   }
 
   changeQuote() {
-    const { quotes, colors } = this.state;
+    const { appearQuote, quotes, colors } = this.state;
     let index;
     do {
       index = Math.round(Math.random() * (quotes.length - 1));
@@ -52,7 +54,12 @@ class Quotes extends React.Component {
     } while (colorIndex === this.state.colorIndex);
     const style = this.changeColor(this.state.colors, colorIndex);
 
-    this.setState({ index, colorIndex, style }, () => {
+    this.setState({
+      appearQuote: !appearQuote,
+      index,
+      colorIndex,
+      style
+    }, () => {
       this.changeThemeColor();
     });
   }
@@ -91,29 +98,36 @@ class Quotes extends React.Component {
   }
 
   render() {
-    const { quote, author } = this.state.quotes[this.state.index] || {};
+    const { appearQuote, quotes, style } = this.state;
+    const { quote, author } = quotes[this.state.index] || {};
 
     const twitterLink = `https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=${encodeURIComponent(`"${quote}"${author}`)}`;
     const tumblrLink = `https://www.tumblr.com/widgets/share/tool?posttype=quote&tags=quotes,freecodecamp&caption=${encodeURIComponent(quote)}&content=${encodeURIComponent(quote)}&canonicalUrl=https%3A%2F%2Fwww.tumblr.com%2Fbuttons&shareSource=tumblr_share_button`;
     return (
-      <div className="quote-box" style={this.state.style.color}>
-        <div className="quote">
-          <h1>
-            <i className="fa fa-quote-left"/>
-            <span className="content">{quote}</span>
-          </h1>
-          <p className="author">- {author}</p>
-        </div>
+      <div className="quote-box" style={style.color}>
+        <CSSTransition
+          in={appearQuote}
+          appear={true}
+          timeout={500}
+          classNames="fade">
+          <div className="quote">
+            <h1>
+              <i className="fa fa-quote-left"/>
+              <span className="content">{quote}</span>
+            </h1>
+            <p className="author">- {author}</p>
+          </div>
+        </CSSTransition>
         <div className="buttons">
           <div className="buttons__social">
-            <a style={this.state.style.backgroundColor} href={twitterLink} target="_blank">
+            <a style={style.backgroundColor} href={twitterLink} rel="noopener noreferrer" target="_blank">
               <i className="fa fa-twitter" />
             </a>
-            <a style={this.state.style.backgroundColor} href={tumblrLink} target="_blank">
+            <a style={style.backgroundColor} href={tumblrLink} rel="noopener noreferrer" target="_blank">
               <i className="fa fa-tumblr" />
             </a>
           </div>
-          <button className="buttons__change" onClick={this.changeQuote.bind(this)} style={this.state.style.backgroundColor}>New quote</button>
+          <button className="buttons__change" onClick={this.changeQuote.bind(this)} style={style.backgroundColor}>New quote</button>
         </div>
       </div>
     );
