@@ -102,7 +102,7 @@ body {
   outline: none !important;
 }
 
-buttons__change:hover {
+.buttons__change:hover {
   cursor: pointer;
 }
 
