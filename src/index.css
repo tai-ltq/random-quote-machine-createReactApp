@@ -87,7 +87,7 @@ body {
 
 .buttons__social a {
   width: 40px;
-  line-height: 38px;
+  line-height: 40px;
   background-color: initial;
 }
 
@@ -100,6 +100,10 @@ body {
   padding: 8px 18px 6px;
   border: none;
   outline: none !important;
+}
+
+buttons__change:hover {
+  cursor: pointer;
 }
 
 .buttons__social a:hover, .buttons__change:hover {
